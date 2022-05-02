@@ -1,54 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict>
-    <key>Description</key>
-    <string>Downloads latest version of Telegraf.</string>
-    <key>Identifier</key>
-    <string>com.github.lashomb.download.Telegraf</string>
-    <key>Input</key>
     <dict>
-        <key>NAME</key>
-        <string>Telegraf</string>
-<!--SELECT YOUR OS VERSION AND USE IT IN YOUR OVERRIDE
+        <key>Description</key>
+        <string>Downloads latest version of Telegraf.</string>
+        <key>Identifier</key>
+        <string>com.github.lashomb.download.Telegraf</string>
+        <key>Input</key>
+        <dict>
+            <key>NAME</key>
+            <string>Telegraf</string>
+            <!--SELECT YOUR OS VERSION AND USE IT IN YOUR OVERRIDE
 	"darwin_amd64" for macOS x86_64 DMG
 	"darwin_arm64" for macOS arm64 M1 DMG
 -->
-		<key>OS</key>
-		<string></string>
-    </dict>
-    <key>MinimumVersion</key>
-    <string>0.6.1</string>
-    <key>Process</key>
-    <array>
-    	<dict>
-            <key>Arguments</key>
-            <dict>
-                <key>url</key>
-                <string>https://portal.influxdata.com/downloads/</string>
-                <key>re_pattern</key>
-                <string>(telegraf-(\d+\.)(\d+\.)(\d+)_%OS%\.dmg)</string>
-                <key>result_output_var_name</key>
-                <string>match</string>
-            </dict>
-			<key>Processor</key>
-			<string>URLTextSearcher</string>
-      	</dict>
-		<dict>
-			<key>Arguments</key>
-            <dict>
-                <key>url</key>
-                <string>https://dl.influxdata.com/telegraf/releases/%match%</string>
-                <key>filename</key>
-                <string>%match%</string>
-            </dict>
-			<key>Processor</key>
-			<string>URLDownloader</string>
-		</dict>
-        <dict>
-            <key>Processor</key>
-            <string>EndOfCheckPhase</string>
+            <key>OS</key>
+            <string></string>
         </dict>
-    </array>
-</dict>
+        <key>MinimumVersion</key>
+        <string>0.6.1</string>
+        <key>Process</key>
+        <array>
+            <dict>
+                <key>Arguments</key>
+                <dict>
+                    <key>url</key>
+                    <string>https://portal.influxdata.com/downloads/</string>
+                    <key>re_pattern</key>
+                    <string>(telegraf-(\d+\.)(\d+\.)(\d+)_%OS%\.dmg)</string>
+                    <key>result_output_var_name</key>
+                    <string>match</string>
+                </dict>
+                <key>Processor</key>
+                <string>URLTextSearcher</string>
+            </dict>
+            <dict>
+                <key>Arguments</key>
+                <dict>
+                    <key>url</key>
+                    <string>https://dl.influxdata.com/telegraf/releases/%match%</string>
+                    <key>filename</key>
+                    <string>%match%</string>
+                </dict>
+                <key>Processor</key>
+                <string>URLDownloader</string>
+            </dict>
+            <dict>
+                <key>Processor</key>
+                <string>EndOfCheckPhase</string>
+            </dict>
+        </array>
+    </dict>
 </plist>
