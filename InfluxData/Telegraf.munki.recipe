@@ -15,7 +15,7 @@
 		<key>NAME</key>
 		<string>Telegraf</string>
 		<!--See ParentRecipe for OS options-->
-		<key>os</key>
+		<key>OS</key>
 		<string></string>
 		<key>pkginfo</key>
 		<dict>
