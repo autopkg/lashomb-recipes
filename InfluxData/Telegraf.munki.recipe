@@ -17,6 +17,8 @@
 		<!--See ParentRecipe for OS options-->
 		<key>OS</key>
 		<string></string>
+		<key>ARCH</key>
+		<string></string>
 		<key>pkginfo</key>
 		<dict>
 			<key>catalogs</key>
@@ -31,6 +33,10 @@
 			<string>Telegraf</string>
 			<key>name</key>
 			<string>%NAME%</string>
+			<key>supported_architectures</key>
+			<array>
+				<string>%ARCH%</string>
+			</array>
 			<key>unattended_install</key>
 			<true/>
 		</dict>
