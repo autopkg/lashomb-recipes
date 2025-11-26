@@ -1,0 +1,30 @@
+Description: Imports Monotype Fonts into Munki.
+Identifier: com.github.lashomb.munki.monotypefonts
+MinimumVersion: "2.3"
+ParentRecipe: com.github.markkenny.autopkg.pkg.monotypefonts
+
+Input:
+  NAME: Monotype Fonts
+  MUNKI_REPO_SUBDIR: apps/%NAME%
+  pkginfo:
+    catalogs:
+      - testing
+    description: >
+      Monotype Fonts is a font management application that allows you to sync
+      and install fonts from your Monotype library. Access thousands of fonts
+      from the world's best type foundries.
+    developer: Monotype Imaging
+    display_name: "%NAME%"
+    name: "%NAME%"
+    category: Utilities
+    unattended_install: true
+    uninstall_script: |
+      #!/bin/bash
+      /Applications/Monotype\ Fonts/.Components/Services/CoreServices/MonotypeFontsService --uninstaller
+
+Process:
+  - Processor: MunkiImporter
+    Arguments:
+      extract_icon: true
+      pkg_path: "%pkg_path%"
+      repo_subdirectory: "%MUNKI_REPO_SUBDIR%"
