@@ -1,0 +1,20 @@
+---
+Description: Downloads the latest Amazon DCV Client for macOS (x86_64/Intel).
+Identifier: com.lashomb.download.AmazonDCVClient-x86_64
+MinimumVersion: '2.3'
+
+Input:
+  NAME: AmazonDCVClient-x86_64
+  DOWNLOAD_URL: https://d1uj6qtbmh3dt5.cloudfront.net/nice-dcv-viewer.x86_64.dmg
+
+Process:
+  - Processor: URLDownloader
+    Arguments:
+      url: '%DOWNLOAD_URL%'
+      filename: '%NAME%.dmg'
+
+  - Processor: StopProcessingIf
+    Arguments:
+      predicate: download_changed == FALSE
+
+  - Processor: EndOfCheckPhase

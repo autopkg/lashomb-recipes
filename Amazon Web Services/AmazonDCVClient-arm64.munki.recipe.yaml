@@ -1,0 +1,32 @@
+---
+Description: Downloads the latest Amazon DCV Client for macOS (arm64/Apple Silicon) and imports it into Munki.
+Identifier: com.lashomb.munki.AmazonDCVClient-arm64
+ParentRecipe: com.lashomb.download.AmazonDCVClient-arm64
+MinimumVersion: '2.3'
+
+Input:
+  NAME: AmazonDCVClient-arm64
+  MUNKI_REPO_SUBDIR: apps/amazon/amazondcvclient
+  pkginfo:
+    catalogs:
+      - testing
+    category: Remote Desktop
+    description: >-
+      Amazon DCV is a high-performance remote display protocol that provides
+      customers with a secure way to deliver remote desktops and application
+      streaming from any cloud or data center to any device, over varying
+      network conditions.
+    developer: Amazon Web Services
+    display_name: Amazon DCV Client
+    name: '%NAME%'
+    supported_architectures:
+      - arm64
+    unattended_install: true
+    unattended_uninstall: true
+
+Process:
+  - Processor: MunkiImporter
+    Arguments:
+      pkg_path: '%pathname%'
+      repo_subdirectory: '%MUNKI_REPO_SUBDIR%'
+      extract_icon: true
